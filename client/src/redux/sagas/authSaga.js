@@ -6,9 +6,9 @@ import {
   SIGNOUT,
   removeAuthUser,
   AUTH,
-  setIsLoaded,
   SIGNUP,
   setIsAdmin,
+  setAuthLoaded,
 } from "../actions/authActions";
 import { setSignInError, setSignUpError } from "../actions/errorActions";
 
@@ -22,10 +22,10 @@ function* signInWorker(action) {
       yield put(setIsAdmin(true));
     }
 
-    yield put(setIsLoaded(false));
+    yield put(setAuthLoaded(false));
   } catch (error) {
     yield put(setSignInError(error.response.data.error));
-    yield put(setIsLoaded(false));
+    yield put(setAuthLoaded(false));
     localStorage.removeItem("token");
   }
 }
@@ -36,11 +36,11 @@ function* signUpWorker(action) {
     localStorage.setItem("token", user.data.token);
 
     yield put(setAuthUser(user.data.user));
-    yield put(setIsLoaded(false));
+    yield put(setAuthLoaded(false));
   } catch (error) {
     yield put(setSignUpError(error.response.data.error));
     localStorage.removeItem("token");
-    yield put(setIsLoaded(false));
+    yield put(setAuthLoaded(false));
   }
 }
 
@@ -56,7 +56,7 @@ function* signOutWorker() {
     yield put(removeAuthUser());
   } catch (error) {
     localStorage.removeItem("token");
-    yield put(setIsLoaded(false));
+    yield put(setAuthLoaded(false));
   }
 }
 
@@ -70,10 +70,10 @@ function* authWorker() {
       yield put(setIsAdmin(true));
     }
 
-    yield put(setIsLoaded(false));
+    yield put(setAuthLoaded(false));
   } catch (error) {
     localStorage.removeItem("token");
-    yield put(setIsLoaded(false));
+    yield put(setAuthLoaded(false));
   }
 }
 

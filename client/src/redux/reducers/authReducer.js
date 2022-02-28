@@ -1,7 +1,7 @@
 import {
   SET_AUTH_USER,
   REMOVE_AUTH_USER,
-  SET_IS_LOADED,
+  SET_AUTH_LOADED,
   SET_IS_ADMIN,
 } from "../actions/authActions";
 
@@ -9,7 +9,7 @@ const initialState = {
   user: {},
   isAuth: false,
   isAdmin: false,
-  isLoaded: true,
+  authLoaded: true,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -18,8 +18,8 @@ const authReducer = (state = initialState, action) => {
       return { ...state, user: action.payload, isAuth: true };
     case REMOVE_AUTH_USER:
       return { ...state, user: {}, isAuth: false };
-    case SET_IS_LOADED:
-      return { ...state, isLoaded: action.payload };
+    case SET_AUTH_LOADED:
+      return { ...state, authLoaded: action.payload };
     case SET_IS_ADMIN:
       return { ...state, isAdmin: action.payload };
     default:

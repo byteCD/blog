@@ -7,10 +7,10 @@ import UserMenu from "./UserMenu";
 import "./Menu.css";
 
 const Menu = () => {
-  const isLoaded = useSelector((state) => state.authReducer.isLoaded);
+  const authLoaded = useSelector((state) => state.authReducer.authLoaded);
 
   return (
-    !isLoaded && (
+    !authLoaded && (
       <Nav>
         <AdminMenu />
         <UserMenu />

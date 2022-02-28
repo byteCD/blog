@@ -1,9 +1,15 @@
-import { SET_USER, SET_USERS, SET_USER_POSTS } from "../actions/userActions";
+import {
+  SET_USER,
+  SET_USERS,
+  SET_USER_POSTS,
+  SET_USER_LOADED,
+} from "../actions/userActions";
 
 const initialState = {
   user: {},
   users: [],
   userPosts: [],
+  userLoaded: true,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -14,6 +20,8 @@ const userReducer = (state = initialState, action) => {
       return { ...state, users: action.payload };
     case SET_USER_POSTS:
       return { ...state, userPosts: action.payload };
+    case SET_USER_LOADED:
+      return { ...state, userLoaded: action.payload };
     default:
       return state;
   }

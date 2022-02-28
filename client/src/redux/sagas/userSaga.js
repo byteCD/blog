@@ -10,6 +10,7 @@ import {
   GET_USER_POSTS,
   setUserPosts,
   GET_USER_COMMENTS,
+  setUserLoaded,
 } from "../actions/userActions";
 
 function* getUsersWorker() {
@@ -25,8 +26,10 @@ function* getUserWorker(action) {
     const user = yield call(userService.getUser, action.payload);
 
     yield put(setUser(user.data));
+    yield put(setUserLoaded(false));
   } catch (error) {
     yield put(setGetUserError(error.response.data.error));
+    yield put(setUserLoaded(false));
   }
 }
 

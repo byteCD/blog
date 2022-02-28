@@ -10,11 +10,14 @@ import { useParams } from "react-router";
 import { Row, Col } from "react-bootstrap";
 import Error from "../../components/Error/Error";
 import Tabs from "../../components/Tabs/Tabs";
+import Loader from "../../components/Loader/Loader";
 
 const User = () => {
   const dispatch = useDispatch();
   const params = useParams();
-  const { user, userPosts } = useSelector((state) => state.userReducer);
+  const { user, userPosts, userLoaded } = useSelector(
+    (state) => state.userReducer
+  );
   const error = useSelector((state) => state.errorReducer.getUserError);
   const comments = useSelector((state) => state.commentReducer.comments);
 
@@ -24,27 +27,21 @@ const User = () => {
     dispatch(getUserComments(params.id));
   }, []);
 
-  if (error) {
-    return (
-      <Row>
-        <Col>
-          <Error error={error} />
-        </Col>
-      </Row>
-    );
-  }
-
   return (
     <Row>
       <Col>
-        <Col className="User">
-          <h3>{user.username}</h3>
-          <p>{user.role}</p>
-          <Tabs
-            userPosts={user.role === "Администратор" && userPosts}
-            comments={comments}
-          />
-        </Col>
+        {userLoaded && <Loader />}
+        {!userLoaded && error && <Error error={error} />}
+        {!userLoaded && !error && (
+          <Col className="User">
+            <h3>{user.username}</h3>
+            <p>{user.role}</p>
+            <Tabs
+              userPosts={user.role === "Администратор" && userPosts}
+              comments={comments}
+            />
+          </Col>
+        )}
       </Col>
     </Row>
   );

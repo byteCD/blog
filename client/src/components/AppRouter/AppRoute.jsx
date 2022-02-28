@@ -3,11 +3,11 @@ import { Navigate } from "react-router-dom";
 import { routes } from "./AppRoutes";
 
 const AppRoute = ({ children, guest, admin, user }) => {
-  const { isAuth, isAdmin, isLoaded } = useSelector(
+  const { isAuth, isAdmin, authLoaded } = useSelector(
     (state) => state.authReducer
   );
 
-  if (admin && !isLoaded) {
+  if (admin && !authLoaded) {
     return isAuth && isAdmin ? (
       children
     ) : (
@@ -15,11 +15,11 @@ const AppRoute = ({ children, guest, admin, user }) => {
     );
   }
 
-  if (guest && !isLoaded) {
+  if (guest && !authLoaded) {
     return !isAuth ? children : <Navigate to={routes.profile} replace />;
   }
 
-  if (user && !isLoaded) {
+  if (user && !authLoaded) {
     return isAuth ? children : <Navigate to={routes.signIn} replace />;
   }
 

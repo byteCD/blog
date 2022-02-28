@@ -4,7 +4,7 @@ export const SIGNOUT = "SIGNOUT";
 export const SET_AUTH_USER = "SET_AUTH_USER";
 export const REMOVE_AUTH_USER = "REMOVE_AUTH_USER";
 export const AUTH = "AUTH";
-export const SET_IS_LOADED = "SET_IS_LOADED";
+export const SET_AUTH_LOADED = "SET_AUTH_LOADED";
 export const SET_IS_ADMIN = "SET_IS_ADMIN";
 
 export const setAuthUser = (user) => ({
@@ -34,9 +34,9 @@ export const auth = () => ({
   type: AUTH,
 });
 
-export const setIsLoaded = (isLoaded) => ({
-  type: SET_IS_LOADED,
-  payload: isLoaded,
+export const setAuthLoaded = (authLoaded) => ({
+  type: SET_AUTH_LOADED,
+  payload: authLoaded,
 });
 
 export const setIsAdmin = (isAdmin) => ({

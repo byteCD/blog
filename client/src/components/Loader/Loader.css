@@ -1,0 +1,9 @@
+.Loader {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.spinner-border {
+  border-radius: 16px !important;
+}

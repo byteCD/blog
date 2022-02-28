@@ -6,6 +6,8 @@ export const GET_POSTS = "GET_POSTS";
 export const DELETE_POST = "DELETE_POST";
 export const EDIT_POST = "EDIT_POST";
 export const GET_POST_COMMENTS = "GET_POST_COMMENTS";
+export const SET_POSTS_LOADED = "SET_POSTS_LOADED";
+export const SET_POST_LOADED = "SET_POST_LOADED";
 
 export const addPost = (post) => ({
   type: ADD_POST,
@@ -44,4 +46,14 @@ export const editPost = (post) => ({
 export const getPostComments = (post) => ({
   type: GET_POST_COMMENTS,
   payload: post,
+});
+
+export const setPostsLoaded = (postsLoaded) => ({
+  type: SET_POSTS_LOADED,
+  payload: postsLoaded,
+});
+
+export const setPostLoaded = (postLoaded) => ({
+  type: SET_POST_LOADED,
+  payload: postLoaded,
 });

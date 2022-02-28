@@ -10,7 +10,9 @@ import {
   GET_POSTS,
   GET_POST_COMMENTS,
   setPost,
+  setPostLoaded,
   setPosts,
+  setPostsLoaded,
 } from "../actions/postActions";
 
 function* addPostWorker(action) {
@@ -27,8 +29,10 @@ function* getPostWorker(action) {
     const post = yield call(postService.getPost, action.payload);
 
     yield put(setPost(post.data));
+    yield put(setPostLoaded(false));
   } catch (error) {
     yield put(setGetPostError(error.response.data.error));
+    yield put(setPostLoaded(false));
   }
 }
 
@@ -37,6 +41,7 @@ function* getPostsWorker() {
     const posts = yield call(postService.getPosts);
 
     yield put(setPosts(posts.data));
+    yield put(setPostsLoaded(false));
   } catch (error) {}
 }
 

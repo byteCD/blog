@@ -5,6 +5,7 @@ export const SET_USERS = "SET_USERS";
 export const GET_USER_POSTS = "GET_USER_POSTS";
 export const SET_USER_POSTS = "SET_USER_POSTS";
 export const GET_USER_COMMENTS = "GET_USER_COMMENTS";
+export const SET_USER_LOADED = "SET_USER_LOADED";
 
 export const setUser = (user) => ({
   type: SET_USER,
@@ -38,4 +39,9 @@ export const getUserPosts = (id) => ({
 export const getUserComments = (id) => ({
   type: GET_USER_COMMENTS,
   payload: id,
+});
+
+export const setUserLoaded = (userLoaded) => ({
+  type: SET_USER_LOADED,
+  payload: userLoaded,
 });
