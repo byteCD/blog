@@ -1,0 +1,26 @@
+.PostItem {
+  box-shadow: 0px 3px 11px -2px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.PostItem__btn {
+  margin-right: 15px;
+}
+
+.card {
+  border-radius: 4px !important;
+  border: 0 !important;
+}
+
+@media (max-width: 379px) {
+  .PostItem__btns {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .PostItem__btn {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+}

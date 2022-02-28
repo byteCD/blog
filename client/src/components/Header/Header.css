@@ -1,0 +1,23 @@
+.navbar {
+  background-color: #2f3b48 !important;
+}
+
+.navbar-collapse {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Header__logo {
+  text-decoration: none;
+  color: #fff;
+}
+
+.Header__logo:hover {
+  color: inherit;
+}
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    justify-content: center;
+  }
+}
